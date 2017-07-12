@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.HandlerecordMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Handlerecord" >
+    <id column="rid" property="rid" jdbcType="INTEGER" />
+    <result column="classid" property="classid" jdbcType="INTEGER" />
+    <result column="operattime" property="operattime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rid, classid, operattime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from handlerecord
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from handlerecord
+    where rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Handlerecord" >
+    insert into handlerecord (rid, classid, operattime
+      )
+    values (#{rid,jdbcType=INTEGER}, #{classid,jdbcType=INTEGER}, #{operattime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Handlerecord" >
+    insert into handlerecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="classid != null" >
+        classid,
+      </if>
+      <if test="operattime != null" >
+        operattime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="operattime != null" >
+        #{operattime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Handlerecord" >
+    update handlerecord
+    <set >
+      <if test="classid != null" >
+        classid = #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="operattime != null" >
+        operattime = #{operattime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Handlerecord" >
+    update handlerecord
+    set classid = #{classid,jdbcType=INTEGER},
+      operattime = #{operattime,jdbcType=TIMESTAMP}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+</mapper>

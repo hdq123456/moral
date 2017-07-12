@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.ClassscoretypeMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Classscoretype" >
+    <id column="typeid" property="typeid" jdbcType="INTEGER" />
+    <result column="typename" property="typename" jdbcType="VARCHAR" />
+    <result column="parentid" property="parentid" jdbcType="INTEGER" />
+    <result column="totalscore" property="totalscore" jdbcType="REAL" />
+    <result column="workspaceid" property="workspaceid" jdbcType="INTEGER" />
+    <result column="effective" property="effective" jdbcType="TINYINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    typeid, typename, parentid, totalscore, workspaceid, effective, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from classscoretype
+    where typeid = #{typeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from classscoretype
+    where typeid = #{typeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Classscoretype" >
+    insert into classscoretype (typeid, typename, parentid, 
+      totalscore, workspaceid, effective, 
+      remark)
+    values (#{typeid,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
+      #{totalscore,jdbcType=REAL}, #{workspaceid,jdbcType=INTEGER}, #{effective,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Classscoretype" >
+    insert into classscoretype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typeid != null" >
+        typeid,
+      </if>
+      <if test="typename != null" >
+        typename,
+      </if>
+      <if test="parentid != null" >
+        parentid,
+      </if>
+      <if test="totalscore != null" >
+        totalscore,
+      </if>
+      <if test="workspaceid != null" >
+        workspaceid,
+      </if>
+      <if test="effective != null" >
+        effective,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typeid != null" >
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="typename != null" >
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="totalscore != null" >
+        #{totalscore,jdbcType=REAL},
+      </if>
+      <if test="workspaceid != null" >
+        #{workspaceid,jdbcType=INTEGER},
+      </if>
+      <if test="effective != null" >
+        #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Classscoretype" >
+    update classscoretype
+    <set >
+      <if test="typename != null" >
+        typename = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentid = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="totalscore != null" >
+        totalscore = #{totalscore,jdbcType=REAL},
+      </if>
+      <if test="workspaceid != null" >
+        workspaceid = #{workspaceid,jdbcType=INTEGER},
+      </if>
+      <if test="effective != null" >
+        effective = #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where typeid = #{typeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Classscoretype" >
+    update classscoretype
+    set typename = #{typename,jdbcType=VARCHAR},
+      parentid = #{parentid,jdbcType=INTEGER},
+      totalscore = #{totalscore,jdbcType=REAL},
+      workspaceid = #{workspaceid,jdbcType=INTEGER},
+      effective = #{effective,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where typeid = #{typeid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.StdscoresetMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Stdscoreset" >
+    <id column="scoreid" property="scoreid" jdbcType="INTEGER" />
+    <result column="typeid" property="typeid" jdbcType="INTEGER" />
+    <result column="scorename" property="scorename" jdbcType="VARCHAR" />
+    <result column="scorevalue" property="scorevalue" jdbcType="REAL" />
+    <result column="effective" property="effective" jdbcType="TINYINT" />
+    <result column="targetclass" property="targetclass" jdbcType="INTEGER" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    scoreid, typeid, scorename, scorevalue, effective, targetclass, operator, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from stdscoreset
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from stdscoreset
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Stdscoreset" >
+    insert into stdscoreset (scoreid, typeid, scorename, 
+      scorevalue, effective, targetclass, 
+      operator, remark)
+    values (#{scoreid,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}, #{scorename,jdbcType=VARCHAR}, 
+      #{scorevalue,jdbcType=REAL}, #{effective,jdbcType=TINYINT}, #{targetclass,jdbcType=INTEGER}, 
+      #{operator,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Stdscoreset" >
+    insert into stdscoreset
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scoreid != null" >
+        scoreid,
+      </if>
+      <if test="typeid != null" >
+        typeid,
+      </if>
+      <if test="scorename != null" >
+        scorename,
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue,
+      </if>
+      <if test="effective != null" >
+        effective,
+      </if>
+      <if test="targetclass != null" >
+        targetclass,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scoreid != null" >
+        #{scoreid,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null" >
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="scorename != null" >
+        #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorevalue != null" >
+        #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="effective != null" >
+        #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="targetclass != null" >
+        #{targetclass,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Stdscoreset" >
+    update stdscoreset
+    <set >
+      <if test="typeid != null" >
+        typeid = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="scorename != null" >
+        scorename = #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue = #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="effective != null" >
+        effective = #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="targetclass != null" >
+        targetclass = #{targetclass,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Stdscoreset" >
+    update stdscoreset
+    set typeid = #{typeid,jdbcType=INTEGER},
+      scorename = #{scorename,jdbcType=VARCHAR},
+      scorevalue = #{scorevalue,jdbcType=REAL},
+      effective = #{effective,jdbcType=TINYINT},
+      targetclass = #{targetclass,jdbcType=INTEGER},
+      operator = #{operator,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </update>
+</mapper>

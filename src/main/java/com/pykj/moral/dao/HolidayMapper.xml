@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.HolidayMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Holiday" >
+    <id column="holidayid" property="holidayid" jdbcType="INTEGER" />
+    <result column="holidayname" property="holidayname" jdbcType="VARCHAR" />
+    <result column="holidaydetails" property="holidaydetails" jdbcType="VARCHAR" />
+    <result column="startdate" property="startdate" jdbcType="DATE" />
+    <result column="enddate" property="enddate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    holidayid, holidayname, holidaydetails, startdate, enddate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from holiday
+    where holidayid = #{holidayid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from holiday
+    where holidayid = #{holidayid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Holiday" >
+    insert into holiday (holidayid, holidayname, holidaydetails, 
+      startdate, enddate)
+    values (#{holidayid,jdbcType=INTEGER}, #{holidayname,jdbcType=VARCHAR}, #{holidaydetails,jdbcType=VARCHAR}, 
+      #{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Holiday" >
+    insert into holiday
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="holidayid != null" >
+        holidayid,
+      </if>
+      <if test="holidayname != null" >
+        holidayname,
+      </if>
+      <if test="holidaydetails != null" >
+        holidaydetails,
+      </if>
+      <if test="startdate != null" >
+        startdate,
+      </if>
+      <if test="enddate != null" >
+        enddate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="holidayid != null" >
+        #{holidayid,jdbcType=INTEGER},
+      </if>
+      <if test="holidayname != null" >
+        #{holidayname,jdbcType=VARCHAR},
+      </if>
+      <if test="holidaydetails != null" >
+        #{holidaydetails,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Holiday" >
+    update holiday
+    <set >
+      <if test="holidayname != null" >
+        holidayname = #{holidayname,jdbcType=VARCHAR},
+      </if>
+      <if test="holidaydetails != null" >
+        holidaydetails = #{holidaydetails,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        startdate = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        enddate = #{enddate,jdbcType=DATE},
+      </if>
+    </set>
+    where holidayid = #{holidayid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Holiday" >
+    update holiday
+    set holidayname = #{holidayname,jdbcType=VARCHAR},
+      holidaydetails = #{holidaydetails,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=DATE},
+      enddate = #{enddate,jdbcType=DATE}
+    where holidayid = #{holidayid,jdbcType=INTEGER}
+  </update>
+</mapper>

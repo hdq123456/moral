@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.DormregionMapper">
+
+	<resultMap id="BaseResultMap" type="com.pykj.moral.entity.Dormregion">
+		<id column="regionid" property="regionid" jdbcType="INTEGER" />
+		<result column="regionname" property="regionname" jdbcType="VARCHAR" />
+		<result column="parentid" property="parentid" jdbcType="INTEGER" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		regionid, regionname, parentid, remark
+	</sql>
+	
+	 <select id="selectRegionByMultCondition" parameterType="com.pykj.moral.entity.Dormregion" resultType="dormregionentity">  
+        select 
+        <include refid="Base_Column_List" /> 
+        from dormregion  
+        where 1=1  
+        <if test="regionid != null">  
+            and regionid= #{regionid}  
+        </if>  
+        <if test="regionname != null">  
+            and regionname like #{regionname}  
+        </if>  
+        <if test="remark != null">  
+            and remark like #{remark}  
+        </if>  
+        <if test="parentid != null">  
+            and parentid = #{parentid}  
+        </if>  
+    </select>  
+	
+	<delete id="batchDeleteRegion" parameterType="java.util.List">
+        delete from dormregion where regionid in
+        <foreach item="regionItem" collection="list" open="(" separator="," close=")">
+            #{regionItem}
+        </foreach>
+    </delete>
+	
+	<!-- 返回一个list的写法 -->
+	<select id="_list" resultType="dormregionentity">
+		select * from dormregion
+	</select>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from dormregion
+		where regionid = #{regionid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from dormregion
+		where regionid = #{regionid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.pykj.moral.entity.Dormregion">
+		insert into dormregion (regionid, regionname, parentid,
+		remark)
+		values (#{regionid,jdbcType=INTEGER}, #{regionname,jdbcType=VARCHAR},
+		#{parentid,jdbcType=INTEGER},
+		#{remark,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="regionid"
+		parameterType="com.pykj.moral.entity.Dormregion">
+		insert into dormregion
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="regionid != null">
+				regionid,
+			</if>
+			<if test="regionname != null">
+				regionname,
+			</if>
+			<if test="parentid != null">
+				parentid,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="regionid != null">
+				#{regionid,jdbcType=INTEGER},
+			</if>
+			<if test="regionname != null">
+				#{regionname,jdbcType=VARCHAR},
+			</if>
+			<if test="parentid != null">
+				#{parentid,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="regionid">
+			SELECT LAST_INSERT_ID() AS regionid
+		</selectKey>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Dormregion">
+		update dormregion
+		<set>
+			<if test="regionname != null">
+				regionname = #{regionname,jdbcType=VARCHAR},
+			</if>
+			<if test="parentid != null">
+				parentid = #{parentid,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where regionid = #{regionid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Dormregion">
+		update dormregion
+		set regionname = #{regionname,jdbcType=VARCHAR},
+		parentid = #{parentid,jdbcType=INTEGER},
+		remark = #{remark,jdbcType=VARCHAR}
+		where regionid = #{regionid,jdbcType=INTEGER}
+	</update>
+</mapper>

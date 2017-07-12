@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.StdscorerptMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Stdscorerpt" >
+    <id column="cid" property="cid" jdbcType="BIGINT" />
+    <result column="studentid" property="studentid" jdbcType="INTEGER" />
+    <result column="courseplanid" property="courseplanid" jdbcType="INTEGER" />
+    <result column="caculdate" property="caculdate" jdbcType="DATE" />
+    <result column="caculscore" property="caculscore" jdbcType="REAL" />
+    <result column="degree" property="degree" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cid, studentid, courseplanid, caculdate, caculscore, degree, comment, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from stdscorerpt
+    where cid = #{cid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from stdscorerpt
+    where cid = #{cid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Stdscorerpt" >
+    insert into stdscorerpt (cid, studentid, courseplanid, 
+      caculdate, caculscore, degree, 
+      comment, remark)
+    values (#{cid,jdbcType=BIGINT}, #{studentid,jdbcType=INTEGER}, #{courseplanid,jdbcType=INTEGER}, 
+      #{caculdate,jdbcType=DATE}, #{caculscore,jdbcType=REAL}, #{degree,jdbcType=VARCHAR}, 
+      #{comment,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Stdscorerpt" >
+    insert into stdscorerpt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="studentid != null" >
+        studentid,
+      </if>
+      <if test="courseplanid != null" >
+        courseplanid,
+      </if>
+      <if test="caculdate != null" >
+        caculdate,
+      </if>
+      <if test="caculscore != null" >
+        caculscore,
+      </if>
+      <if test="degree != null" >
+        degree,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        #{cid,jdbcType=BIGINT},
+      </if>
+      <if test="studentid != null" >
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="courseplanid != null" >
+        #{courseplanid,jdbcType=INTEGER},
+      </if>
+      <if test="caculdate != null" >
+        #{caculdate,jdbcType=DATE},
+      </if>
+      <if test="caculscore != null" >
+        #{caculscore,jdbcType=REAL},
+      </if>
+      <if test="degree != null" >
+        #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Stdscorerpt" >
+    update stdscorerpt
+    <set >
+      <if test="studentid != null" >
+        studentid = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="courseplanid != null" >
+        courseplanid = #{courseplanid,jdbcType=INTEGER},
+      </if>
+      <if test="caculdate != null" >
+        caculdate = #{caculdate,jdbcType=DATE},
+      </if>
+      <if test="caculscore != null" >
+        caculscore = #{caculscore,jdbcType=REAL},
+      </if>
+      <if test="degree != null" >
+        degree = #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Stdscorerpt" >
+    update stdscorerpt
+    set studentid = #{studentid,jdbcType=INTEGER},
+      courseplanid = #{courseplanid,jdbcType=INTEGER},
+      caculdate = #{caculdate,jdbcType=DATE},
+      caculscore = #{caculscore,jdbcType=REAL},
+      degree = #{degree,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=BIGINT}
+  </update>
+</mapper>

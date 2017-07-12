@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.StdsetMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Stdset" >
+    <id column="systemsetid" property="systemsetid" jdbcType="INTEGER" />
+    <result column="classid" property="classid" jdbcType="INTEGER" />
+    <result column="a_degree" property="aDegree" jdbcType="VARCHAR" />
+    <result column="a_degreescore" property="aDegreescore" jdbcType="REAL" />
+    <result column="b_degree" property="bDegree" jdbcType="VARCHAR" />
+    <result column="b_degreescore" property="bDegreescore" jdbcType="REAL" />
+    <result column="c_degree" property="cDegree" jdbcType="VARCHAR" />
+    <result column="c_degreescore" property="cDegreescore" jdbcType="REAL" />
+    <result column="d_degree" property="dDegree" jdbcType="VARCHAR" />
+    <result column="d_degreescore" property="dDegreescore" jdbcType="REAL" />
+    <result column="other_degree" property="otherDegree" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    systemsetid, classid, a_degree, a_degreescore, b_degree, b_degreescore, c_degree, 
+    c_degreescore, d_degree, d_degreescore, other_degree
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from stdset
+    where systemsetid = #{systemsetid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from stdset
+    where systemsetid = #{systemsetid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Stdset" >
+    insert into stdset (systemsetid, classid, a_degree, 
+      a_degreescore, b_degree, b_degreescore, 
+      c_degree, c_degreescore, d_degree, 
+      d_degreescore, other_degree)
+    values (#{systemsetid,jdbcType=INTEGER}, #{classid,jdbcType=INTEGER}, #{aDegree,jdbcType=VARCHAR}, 
+      #{aDegreescore,jdbcType=REAL}, #{bDegree,jdbcType=VARCHAR}, #{bDegreescore,jdbcType=REAL}, 
+      #{cDegree,jdbcType=VARCHAR}, #{cDegreescore,jdbcType=REAL}, #{dDegree,jdbcType=VARCHAR}, 
+      #{dDegreescore,jdbcType=REAL}, #{otherDegree,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Stdset" >
+    insert into stdset
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="systemsetid != null" >
+        systemsetid,
+      </if>
+      <if test="classid != null" >
+        classid,
+      </if>
+      <if test="aDegree != null" >
+        a_degree,
+      </if>
+      <if test="aDegreescore != null" >
+        a_degreescore,
+      </if>
+      <if test="bDegree != null" >
+        b_degree,
+      </if>
+      <if test="bDegreescore != null" >
+        b_degreescore,
+      </if>
+      <if test="cDegree != null" >
+        c_degree,
+      </if>
+      <if test="cDegreescore != null" >
+        c_degreescore,
+      </if>
+      <if test="dDegree != null" >
+        d_degree,
+      </if>
+      <if test="dDegreescore != null" >
+        d_degreescore,
+      </if>
+      <if test="otherDegree != null" >
+        other_degree,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="systemsetid != null" >
+        #{systemsetid,jdbcType=INTEGER},
+      </if>
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="aDegree != null" >
+        #{aDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="aDegreescore != null" >
+        #{aDegreescore,jdbcType=REAL},
+      </if>
+      <if test="bDegree != null" >
+        #{bDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="bDegreescore != null" >
+        #{bDegreescore,jdbcType=REAL},
+      </if>
+      <if test="cDegree != null" >
+        #{cDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="cDegreescore != null" >
+        #{cDegreescore,jdbcType=REAL},
+      </if>
+      <if test="dDegree != null" >
+        #{dDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="dDegreescore != null" >
+        #{dDegreescore,jdbcType=REAL},
+      </if>
+      <if test="otherDegree != null" >
+        #{otherDegree,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Stdset" >
+    update stdset
+    <set >
+      <if test="classid != null" >
+        classid = #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="aDegree != null" >
+        a_degree = #{aDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="aDegreescore != null" >
+        a_degreescore = #{aDegreescore,jdbcType=REAL},
+      </if>
+      <if test="bDegree != null" >
+        b_degree = #{bDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="bDegreescore != null" >
+        b_degreescore = #{bDegreescore,jdbcType=REAL},
+      </if>
+      <if test="cDegree != null" >
+        c_degree = #{cDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="cDegreescore != null" >
+        c_degreescore = #{cDegreescore,jdbcType=REAL},
+      </if>
+      <if test="dDegree != null" >
+        d_degree = #{dDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="dDegreescore != null" >
+        d_degreescore = #{dDegreescore,jdbcType=REAL},
+      </if>
+      <if test="otherDegree != null" >
+        other_degree = #{otherDegree,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where systemsetid = #{systemsetid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Stdset" >
+    update stdset
+    set classid = #{classid,jdbcType=INTEGER},
+      a_degree = #{aDegree,jdbcType=VARCHAR},
+      a_degreescore = #{aDegreescore,jdbcType=REAL},
+      b_degree = #{bDegree,jdbcType=VARCHAR},
+      b_degreescore = #{bDegreescore,jdbcType=REAL},
+      c_degree = #{cDegree,jdbcType=VARCHAR},
+      c_degreescore = #{cDegreescore,jdbcType=REAL},
+      d_degree = #{dDegree,jdbcType=VARCHAR},
+      d_degreescore = #{dDegreescore,jdbcType=REAL},
+      other_degree = #{otherDegree,jdbcType=VARCHAR}
+    where systemsetid = #{systemsetid,jdbcType=INTEGER}
+  </update>
+</mapper>

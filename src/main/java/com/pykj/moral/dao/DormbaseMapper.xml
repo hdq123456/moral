@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.DormbaseMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Dormbase" >
+    <id column="basescoreid" property="basescoreid" jdbcType="INTEGER" />
+    <result column="basescorevalue" property="basescorevalue" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    basescoreid, basescorevalue
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dormbase
+    where basescoreid = #{basescoreid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dormbase
+    where basescoreid = #{basescoreid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Dormbase" >
+    insert into dormbase (basescoreid, basescorevalue)
+    values (#{basescoreid,jdbcType=INTEGER}, #{basescorevalue,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Dormbase" >
+    insert into dormbase
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="basescoreid != null" >
+        basescoreid,
+      </if>
+      <if test="basescorevalue != null" >
+        basescorevalue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="basescoreid != null" >
+        #{basescoreid,jdbcType=INTEGER},
+      </if>
+      <if test="basescorevalue != null" >
+        #{basescorevalue,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Dormbase" >
+    update dormbase
+    <set >
+      <if test="basescorevalue != null" >
+        basescorevalue = #{basescorevalue,jdbcType=INTEGER},
+      </if>
+    </set>
+    where basescoreid = #{basescoreid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Dormbase" >
+    update dormbase
+    set basescorevalue = #{basescorevalue,jdbcType=INTEGER}
+    where basescoreid = #{basescoreid,jdbcType=INTEGER}
+  </update>
+</mapper>

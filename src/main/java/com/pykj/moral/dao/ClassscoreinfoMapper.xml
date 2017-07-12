@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.ClassscoreinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Classscoreinfo" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="classid" property="classid" jdbcType="INTEGER" />
+    <result column="typeid" property="typeid" jdbcType="INTEGER" />
+    <result column="scorename" property="scorename" jdbcType="VARCHAR" />
+    <result column="scorevalue" property="scorevalue" jdbcType="REAL" />
+    <result column="imgeid" property="imgeid" jdbcType="INTEGER" />
+    <result column="relaxdetail" property="relaxdetail" jdbcType="VARCHAR" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="operatdate" property="operatdate" jdbcType="DATE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uid, classid, typeid, scorename, scorevalue, imgeid, relaxdetail, operator, operatdate, 
+    remark
+  </sql>
+  
+  <!-- 返回一个list的写法 -->
+	<select id="selectALL" resultType="classscoreinfoentity">
+		select * from classscoreinfo
+	</select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from classscoreinfo
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from classscoreinfo
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Classscoreinfo" >
+    insert into classscoreinfo (uid, classid, typeid, 
+      scorename, scorevalue, imgeid, 
+      relaxdetail, operator, operatdate, 
+      remark)
+    values (#{uid,jdbcType=INTEGER}, #{classid,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}, 
+      #{scorename,jdbcType=VARCHAR}, #{scorevalue,jdbcType=REAL}, #{imgeid,jdbcType=INTEGER}, 
+      #{relaxdetail,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, #{operatdate,jdbcType=DATE}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Classscoreinfo" >
+    insert into classscoreinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="classid != null" >
+        classid,
+      </if>
+      <if test="typeid != null" >
+        typeid,
+      </if>
+      <if test="scorename != null" >
+        scorename,
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue,
+      </if>
+      <if test="imgeid != null" >
+        imgeid,
+      </if>
+      <if test="relaxdetail != null" >
+        relaxdetail,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="operatdate != null" >
+        operatdate,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null" >
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="scorename != null" >
+        #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorevalue != null" >
+        #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="imgeid != null" >
+        #{imgeid,jdbcType=INTEGER},
+      </if>
+      <if test="relaxdetail != null" >
+        #{relaxdetail,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatdate != null" >
+        #{operatdate,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Classscoreinfo" >
+    update classscoreinfo
+    <set >
+      <if test="classid != null" >
+        classid = #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null" >
+        typeid = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="scorename != null" >
+        scorename = #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue = #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="imgeid != null" >
+        imgeid = #{imgeid,jdbcType=INTEGER},
+      </if>
+      <if test="relaxdetail != null" >
+        relaxdetail = #{relaxdetail,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatdate != null" >
+        operatdate = #{operatdate,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Classscoreinfo" >
+    update classscoreinfo
+    set classid = #{classid,jdbcType=INTEGER},
+      typeid = #{typeid,jdbcType=INTEGER},
+      scorename = #{scorename,jdbcType=VARCHAR},
+      scorevalue = #{scorevalue,jdbcType=REAL},
+      imgeid = #{imgeid,jdbcType=INTEGER},
+      relaxdetail = #{relaxdetail,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      operatdate = #{operatdate,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

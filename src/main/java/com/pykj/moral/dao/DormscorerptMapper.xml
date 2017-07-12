@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.DormscorerptMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Dormscorerpt" >
+    <id column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="dormid" property="dormid" jdbcType="INTEGER" />
+    <result column="year" property="year" jdbcType="INTEGER" />
+    <result column="month" property="month" jdbcType="INTEGER" />
+    <result column="caculdate" property="caculdate" jdbcType="DATE" />
+    <result column="caculscore" property="caculscore" jdbcType="REAL" />
+    <result column="degree" property="degree" jdbcType="VARCHAR" />
+    <result column="isillegal" property="isillegal" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cid, dormid, year, month, caculdate, caculscore, degree, isillegal, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dormscorerpt
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dormscorerpt
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Dormscorerpt" >
+    insert into dormscorerpt (cid, dormid, year, 
+      month, caculdate, caculscore, 
+      degree, isillegal, remark
+      )
+    values (#{cid,jdbcType=INTEGER}, #{dormid,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, 
+      #{month,jdbcType=INTEGER}, #{caculdate,jdbcType=DATE}, #{caculscore,jdbcType=REAL}, 
+      #{degree,jdbcType=VARCHAR}, #{isillegal,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Dormscorerpt" >
+    insert into dormscorerpt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="dormid != null" >
+        dormid,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="month != null" >
+        month,
+      </if>
+      <if test="caculdate != null" >
+        caculdate,
+      </if>
+      <if test="caculscore != null" >
+        caculscore,
+      </if>
+      <if test="degree != null" >
+        degree,
+      </if>
+      <if test="isillegal != null" >
+        isillegal,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="dormid != null" >
+        #{dormid,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=INTEGER},
+      </if>
+      <if test="caculdate != null" >
+        #{caculdate,jdbcType=DATE},
+      </if>
+      <if test="caculscore != null" >
+        #{caculscore,jdbcType=REAL},
+      </if>
+      <if test="degree != null" >
+        #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="isillegal != null" >
+        #{isillegal,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Dormscorerpt" >
+    update dormscorerpt
+    <set >
+      <if test="dormid != null" >
+        dormid = #{dormid,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="month != null" >
+        month = #{month,jdbcType=INTEGER},
+      </if>
+      <if test="caculdate != null" >
+        caculdate = #{caculdate,jdbcType=DATE},
+      </if>
+      <if test="caculscore != null" >
+        caculscore = #{caculscore,jdbcType=REAL},
+      </if>
+      <if test="degree != null" >
+        degree = #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="isillegal != null" >
+        isillegal = #{isillegal,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Dormscorerpt" >
+    update dormscorerpt
+    set dormid = #{dormid,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      month = #{month,jdbcType=INTEGER},
+      caculdate = #{caculdate,jdbcType=DATE},
+      caculscore = #{caculscore,jdbcType=REAL},
+      degree = #{degree,jdbcType=VARCHAR},
+      isillegal = #{isillegal,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>

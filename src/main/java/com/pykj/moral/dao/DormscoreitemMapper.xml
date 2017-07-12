@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.DormscoreitemMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Dormscoreitem" >
+    <id column="scoreid" property="scoreid" jdbcType="INTEGER" />
+    <result column="scorename" property="scorename" jdbcType="VARCHAR" />
+    <result column="scorevalue" property="scorevalue" jdbcType="REAL" />
+    <result column="effective" property="effective" jdbcType="TINYINT" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    scoreid, scorename, scorevalue, effective, operator, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dormscoreitem
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dormscoreitem
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Dormscoreitem" >
+    insert into dormscoreitem (scoreid, scorename, scorevalue, 
+      effective, operator, remark
+      )
+    values (#{scoreid,jdbcType=INTEGER}, #{scorename,jdbcType=VARCHAR}, #{scorevalue,jdbcType=REAL}, 
+      #{effective,jdbcType=TINYINT}, #{operator,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Dormscoreitem" >
+    insert into dormscoreitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scoreid != null" >
+        scoreid,
+      </if>
+      <if test="scorename != null" >
+        scorename,
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue,
+      </if>
+      <if test="effective != null" >
+        effective,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scoreid != null" >
+        #{scoreid,jdbcType=INTEGER},
+      </if>
+      <if test="scorename != null" >
+        #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorevalue != null" >
+        #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="effective != null" >
+        #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Dormscoreitem" >
+    update dormscoreitem
+    <set >
+      <if test="scorename != null" >
+        scorename = #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue = #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="effective != null" >
+        effective = #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Dormscoreitem" >
+    update dormscoreitem
+    set scorename = #{scorename,jdbcType=VARCHAR},
+      scorevalue = #{scorevalue,jdbcType=REAL},
+      effective = #{effective,jdbcType=TINYINT},
+      operator = #{operator,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </update>
+</mapper>

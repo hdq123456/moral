@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.IllegalMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Illegal" >
+    <id column="illegalid" property="illegalid" jdbcType="INTEGER" />
+    <result column="itemid" property="itemid" jdbcType="INTEGER" />
+    <result column="studentid" property="studentid" jdbcType="INTEGER" />
+    <result column="scorename" property="scorename" jdbcType="VARCHAR" />
+    <result column="imageid" property="imageid" jdbcType="INTEGER" />
+    <result column="scorevalue" property="scorevalue" jdbcType="REAL" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="operatortime" property="operatortime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="dormid" property="dormid" jdbcType="INTEGER" />
+    <result column="year" property="year" jdbcType="INTEGER" />
+    <result column="month" property="month" jdbcType="INTEGER" />
+    <result column="studentinfo" property="studentinfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    illegalid, itemid, studentid, scorename, imageid, scorevalue, operator, operatortime, 
+    remark, dormid, year, month, studentinfo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from illegal
+    where illegalid = #{illegalid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from illegal
+    where illegalid = #{illegalid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Illegal" >
+    insert into illegal (illegalid, itemid, studentid, 
+      scorename, imageid, scorevalue, 
+      operator, operatortime, remark, 
+      dormid, year, month, 
+      studentinfo)
+    values (#{illegalid,jdbcType=INTEGER}, #{itemid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, 
+      #{scorename,jdbcType=VARCHAR}, #{imageid,jdbcType=INTEGER}, #{scorevalue,jdbcType=REAL}, 
+      #{operator,jdbcType=VARCHAR}, #{operatortime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{dormid,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, #{month,jdbcType=INTEGER}, 
+      #{studentinfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Illegal" >
+    insert into illegal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="illegalid != null" >
+        illegalid,
+      </if>
+      <if test="itemid != null" >
+        itemid,
+      </if>
+      <if test="studentid != null" >
+        studentid,
+      </if>
+      <if test="scorename != null" >
+        scorename,
+      </if>
+      <if test="imageid != null" >
+        imageid,
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="operatortime != null" >
+        operatortime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="dormid != null" >
+        dormid,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="month != null" >
+        month,
+      </if>
+      <if test="studentinfo != null" >
+        studentinfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="illegalid != null" >
+        #{illegalid,jdbcType=INTEGER},
+      </if>
+      <if test="itemid != null" >
+        #{itemid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null" >
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="scorename != null" >
+        #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="imageid != null" >
+        #{imageid,jdbcType=INTEGER},
+      </if>
+      <if test="scorevalue != null" >
+        #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatortime != null" >
+        #{operatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="dormid != null" >
+        #{dormid,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=INTEGER},
+      </if>
+      <if test="studentinfo != null" >
+        #{studentinfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Illegal" >
+    update illegal
+    <set >
+      <if test="itemid != null" >
+        itemid = #{itemid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null" >
+        studentid = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="scorename != null" >
+        scorename = #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="imageid != null" >
+        imageid = #{imageid,jdbcType=INTEGER},
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue = #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatortime != null" >
+        operatortime = #{operatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="dormid != null" >
+        dormid = #{dormid,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="month != null" >
+        month = #{month,jdbcType=INTEGER},
+      </if>
+      <if test="studentinfo != null" >
+        studentinfo = #{studentinfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where illegalid = #{illegalid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Illegal" >
+    update illegal
+    set itemid = #{itemid,jdbcType=INTEGER},
+      studentid = #{studentid,jdbcType=INTEGER},
+      scorename = #{scorename,jdbcType=VARCHAR},
+      imageid = #{imageid,jdbcType=INTEGER},
+      scorevalue = #{scorevalue,jdbcType=REAL},
+      operator = #{operator,jdbcType=VARCHAR},
+      operatortime = #{operatortime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      dormid = #{dormid,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      month = #{month,jdbcType=INTEGER},
+      studentinfo = #{studentinfo,jdbcType=VARCHAR}
+    where illegalid = #{illegalid,jdbcType=INTEGER}
+  </update>
+</mapper>

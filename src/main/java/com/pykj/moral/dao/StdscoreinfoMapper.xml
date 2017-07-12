@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.StdscoreinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Stdscoreinfo" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="studentid" property="studentid" jdbcType="INTEGER" />
+    <result column="typename" property="typename" jdbcType="VARCHAR" />
+    <result column="scorename" property="scorename" jdbcType="VARCHAR" />
+    <result column="scorevalue" property="scorevalue" jdbcType="REAL" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="operattime" property="operattime" jdbcType="TIMESTAMP" />
+    <result column="timedec" property="timedec" jdbcType="VARCHAR" />
+    <result column="courseplanid" property="courseplanid" jdbcType="INTEGER" />
+    <result column="effective" property="effective" jdbcType="TINYINT" />
+    <result column="effectivetime" property="effectivetime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uid, studentid, typename, scorename, scorevalue, operator, operattime, timedec, courseplanid, 
+    effective, effectivetime, remark
+  </sql>
+  
+   <!-- 返回一个list的写法 -->
+	<select id="selectALL" resultType="stdscoreinfoentity">
+		select * from stdscoreinfo
+	</select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from stdscoreinfo
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from stdscoreinfo
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Stdscoreinfo" >
+    insert into stdscoreinfo (uid, studentid, typename, 
+      scorename, scorevalue, operator, 
+      operattime, timedec, courseplanid, 
+      effective, effectivetime, remark
+      )
+    values (#{uid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR}, 
+      #{scorename,jdbcType=VARCHAR}, #{scorevalue,jdbcType=REAL}, #{operator,jdbcType=VARCHAR}, 
+      #{operattime,jdbcType=TIMESTAMP}, #{timedec,jdbcType=VARCHAR}, #{courseplanid,jdbcType=INTEGER}, 
+      #{effective,jdbcType=TINYINT}, #{effectivetime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Stdscoreinfo" >
+    insert into stdscoreinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="studentid != null" >
+        studentid,
+      </if>
+      <if test="typename != null" >
+        typename,
+      </if>
+      <if test="scorename != null" >
+        scorename,
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="operattime != null" >
+        operattime,
+      </if>
+      <if test="timedec != null" >
+        timedec,
+      </if>
+      <if test="courseplanid != null" >
+        courseplanid,
+      </if>
+      <if test="effective != null" >
+        effective,
+      </if>
+      <if test="effectivetime != null" >
+        effectivetime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null" >
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="typename != null" >
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorename != null" >
+        #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorevalue != null" >
+        #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operattime != null" >
+        #{operattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timedec != null" >
+        #{timedec,jdbcType=VARCHAR},
+      </if>
+      <if test="courseplanid != null" >
+        #{courseplanid,jdbcType=INTEGER},
+      </if>
+      <if test="effective != null" >
+        #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="effectivetime != null" >
+        #{effectivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Stdscoreinfo" >
+    update stdscoreinfo
+    <set >
+      <if test="studentid != null" >
+        studentid = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="typename != null" >
+        typename = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorename != null" >
+        scorename = #{scorename,jdbcType=VARCHAR},
+      </if>
+      <if test="scorevalue != null" >
+        scorevalue = #{scorevalue,jdbcType=REAL},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operattime != null" >
+        operattime = #{operattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timedec != null" >
+        timedec = #{timedec,jdbcType=VARCHAR},
+      </if>
+      <if test="courseplanid != null" >
+        courseplanid = #{courseplanid,jdbcType=INTEGER},
+      </if>
+      <if test="effective != null" >
+        effective = #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="effectivetime != null" >
+        effectivetime = #{effectivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Stdscoreinfo" >
+    update stdscoreinfo
+    set studentid = #{studentid,jdbcType=INTEGER},
+      typename = #{typename,jdbcType=VARCHAR},
+      scorename = #{scorename,jdbcType=VARCHAR},
+      scorevalue = #{scorevalue,jdbcType=REAL},
+      operator = #{operator,jdbcType=VARCHAR},
+      operattime = #{operattime,jdbcType=TIMESTAMP},
+      timedec = #{timedec,jdbcType=VARCHAR},
+      courseplanid = #{courseplanid,jdbcType=INTEGER},
+      effective = #{effective,jdbcType=TINYINT},
+      effectivetime = #{effectivetime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

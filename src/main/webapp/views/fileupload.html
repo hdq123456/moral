@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UpImage</title>
+
+</head>
+<body>
+	<form name="imgform" action="/upload/savefiles" method="post"
+		enctype="multipart/form-data">
+		账号：<input type="text" name="user.username" /><br/>
+		密码：<input type="text" name="user.password" /><br/>
+		<h1>图片上传</h1>
+		<input type="file" name="file" multiple="multiple"/> <input type="submit" value="upload" />
+	</form>
+</body>
+</html>

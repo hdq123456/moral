@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="dormregionentity" type="com.pykj.moral.entity.Dormregion"></typeAlias>
+		<typeAlias alias="dormscoreinfoentity" type="com.pykj.moral.entity.Dormscoreinfo"></typeAlias>
+		<typeAlias alias="stdscoreinfoentity" type="com.pykj.moral.entity.Stdscoreinfo"></typeAlias>
+		<typeAlias alias="classscoreinfoentity" type="com.pykj.moral.entity.Classscoreinfo"></typeAlias>
+		<typeAlias alias="filesentity" type="com.pykj.moral.entity.Files"></typeAlias>
+	</typeAliases>
+</configuration>	

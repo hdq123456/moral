@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pykj.moral.dao.AttendschoolrptMapper" >
+  <resultMap id="BaseResultMap" type="com.pykj.moral.entity.Attendschoolrpt" >
+    <id column="rptid" property="rptid" jdbcType="INTEGER" />
+    <result column="leavecount" property="leavecount" jdbcType="INTEGER" />
+    <result column="delaycount" property="delaycount" jdbcType="INTEGER" />
+    <result column="earlycount" property="earlycount" jdbcType="INTEGER" />
+    <result column="operatdate" property="operatdate" jdbcType="DATE" />
+    <result column="courseplanid" property="courseplanid" jdbcType="INTEGER" />
+    <result column="month" property="month" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rptid, leavecount, delaycount, earlycount, operatdate, courseplanid, month
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from attendschoolrpt
+    where rptid = #{rptid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from attendschoolrpt
+    where rptid = #{rptid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pykj.moral.entity.Attendschoolrpt" >
+    insert into attendschoolrpt (rptid, leavecount, delaycount, 
+      earlycount, operatdate, courseplanid, 
+      month)
+    values (#{rptid,jdbcType=INTEGER}, #{leavecount,jdbcType=INTEGER}, #{delaycount,jdbcType=INTEGER}, 
+      #{earlycount,jdbcType=INTEGER}, #{operatdate,jdbcType=DATE}, #{courseplanid,jdbcType=INTEGER}, 
+      #{month,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pykj.moral.entity.Attendschoolrpt" >
+    insert into attendschoolrpt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rptid != null" >
+        rptid,
+      </if>
+      <if test="leavecount != null" >
+        leavecount,
+      </if>
+      <if test="delaycount != null" >
+        delaycount,
+      </if>
+      <if test="earlycount != null" >
+        earlycount,
+      </if>
+      <if test="operatdate != null" >
+        operatdate,
+      </if>
+      <if test="courseplanid != null" >
+        courseplanid,
+      </if>
+      <if test="month != null" >
+        month,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rptid != null" >
+        #{rptid,jdbcType=INTEGER},
+      </if>
+      <if test="leavecount != null" >
+        #{leavecount,jdbcType=INTEGER},
+      </if>
+      <if test="delaycount != null" >
+        #{delaycount,jdbcType=INTEGER},
+      </if>
+      <if test="earlycount != null" >
+        #{earlycount,jdbcType=INTEGER},
+      </if>
+      <if test="operatdate != null" >
+        #{operatdate,jdbcType=DATE},
+      </if>
+      <if test="courseplanid != null" >
+        #{courseplanid,jdbcType=INTEGER},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pykj.moral.entity.Attendschoolrpt" >
+    update attendschoolrpt
+    <set >
+      <if test="leavecount != null" >
+        leavecount = #{leavecount,jdbcType=INTEGER},
+      </if>
+      <if test="delaycount != null" >
+        delaycount = #{delaycount,jdbcType=INTEGER},
+      </if>
+      <if test="earlycount != null" >
+        earlycount = #{earlycount,jdbcType=INTEGER},
+      </if>
+      <if test="operatdate != null" >
+        operatdate = #{operatdate,jdbcType=DATE},
+      </if>
+      <if test="courseplanid != null" >
+        courseplanid = #{courseplanid,jdbcType=INTEGER},
+      </if>
+      <if test="month != null" >
+        month = #{month,jdbcType=INTEGER},
+      </if>
+    </set>
+    where rptid = #{rptid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pykj.moral.entity.Attendschoolrpt" >
+    update attendschoolrpt
+    set leavecount = #{leavecount,jdbcType=INTEGER},
+      delaycount = #{delaycount,jdbcType=INTEGER},
+      earlycount = #{earlycount,jdbcType=INTEGER},
+      operatdate = #{operatdate,jdbcType=DATE},
+      courseplanid = #{courseplanid,jdbcType=INTEGER},
+      month = #{month,jdbcType=INTEGER}
+    where rptid = #{rptid,jdbcType=INTEGER}
+  </update>
+</mapper>
